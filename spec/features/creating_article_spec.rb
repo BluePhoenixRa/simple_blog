@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Creating New Posts" do
-  scenario "User creates new blog post" do
+RSpec.feature "Creating New Article" do
+  scenario "User creates new blog article" do
     visit "/"
 
     click_link "New Article"
@@ -12,5 +12,19 @@ RSpec.feature "Creating New Posts" do
 
     expect(page).to have_content("New article has been created")
     expect(page.current_path).to eq(articles_path)
+  end
+
+  scenario "User fails to create new article" do
+    visit "/"
+
+    click_link "New Article"
+
+    fill_in "Title", with: ""
+    fill_in "Body", with: ""
+    click_button "Create Article"
+
+    expect(page).to have_content("Article has not been created")
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Body can't be blank")
   end
 end

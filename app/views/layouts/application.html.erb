@@ -21,21 +21,25 @@
 
        <% flash.each do |name, msg|%>
             <% if msg.is_a?(String) %>
-                <div class="alert alert-success alert-dismissable">
+                <div class="alert alert-<%="#{name}" %> alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <%= content_tag :div, msg, :id => "flash_#{name}" %>
                 </div>
             <% end %>
         <% end %>
 
-       <div class="row">
+       <!--
+        <div class="row">
          <div class="col-lg-8">
+       -->
            <p><%= yield %></p>
-         </div>
+         <!--
+        </div>
 
-         <div class="col-lg-4">
+        <div class="col-lg-4">
 
-         </div>
+        </div>
+       -->
        </div>
 
      </div>
