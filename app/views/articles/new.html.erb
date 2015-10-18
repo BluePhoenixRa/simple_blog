@@ -1,0 +1,15 @@
+<h3 class='text-center'>Create New Article</h3>
+
+  <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, rows: 10, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+  <% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BlogApp</title>
+  <title>Simple Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -21,22 +21,16 @@
 
        <% flash.each do |name, msg|%>
             <% if msg.is_a?(String) %>
-                <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissable">
+                <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <%= content_tag :div, msg, :id => "flash_#{name}" %>
                 </div>
             <% end %>
         <% end %>
 
-       <div class="jumbotron">
-         <h1>Jumbotron heading</h1>
-         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-       </div>
-
-       <div class="row marketing">
+       <div class="row">
          <div class="col-lg-8">
-           <%= yield %>
+           <p><%= yield %></p>
          </div>
 
          <div class="col-lg-4">
@@ -44,11 +38,11 @@
          </div>
        </div>
 
-       <footer class="footer">
-         <p>&copy; Hello, footer!</p>
-       </footer>
-
      </div>
+
+            <footer class="footer text-center">
+              <p>&copy; Hello, footer!</p>
+            </footer>
 
 
 </body>
