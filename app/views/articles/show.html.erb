@@ -1,3 +1,5 @@
 <h1><%= @article.title %></h1>
 <span class="glyphicon glyphicon-calendar"></span> <%= @article.created_at.strftime("%b %d, %Y") %>
 <p><%= simple_format(@article.body) %></p>
+
+<p><%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-success" %></p>
