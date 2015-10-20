@@ -12,8 +12,13 @@
          <nav>
            <ul class="nav nav-pills pull-right">
              <li role="presentation" class="active"><a href="#">Home</a></li>
-             <li role="presentation"><%= link_to "Sign Up", new_user_registration_path %></li>
-             <li role="presentation"><a href="#">Sign In</a></li>
+               <% if user_signed_in? %>
+                 <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+               <% else %>
+                 <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                 <li><%= link_to "Sign In", new_user_session_path %></li>
+               <% end %>
            </ul>
          </nav>
          <a href="/"><h3 class="text-muted">Simple Blog</h3></a>
@@ -21,7 +26,7 @@
 
        <% flash.each do |name, msg|%>
             <% if msg.is_a?(String) %>
-                <div class="alert alert-<%="#{name}" %> alert-dismissable">
+                <div class="alert alert-<%= name == "notice" || name == "success" ? "success" : "danger" %> alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <%= content_tag :div, msg, :id => "flash_#{name}" %>
                 </div>
