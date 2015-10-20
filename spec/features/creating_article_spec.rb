@@ -4,6 +4,7 @@ RSpec.feature "Creating New Article" do
 
   before do
     @jane = User.create!(email: "jane@test.com", password: "password")
+    login_as(@jane)
   end
 
   scenario "User creates new blog article" do
@@ -17,6 +18,7 @@ RSpec.feature "Creating New Article" do
 
     expect(page).to have_content("New article has been created")
     expect(page.current_path).to eq(articles_path)
+    expect(page).to have_content("Created by: #{@jane.email}")
   end
 
   scenario "User fails to create new article" do

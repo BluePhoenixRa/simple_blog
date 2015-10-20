@@ -4,7 +4,10 @@
 
 <% @articles.each do |article| %>
   <div class="well well-lg">
-    <h4><%= link_to article.title, article_path(article) %></h4><br />
+    <h4><%= link_to article.title, article_path(article) %></h4>
+    <% if article.user %>
+      <small><strong>Created by:</strong> <%= article.user.email %></small><br />
+    <% end %>
     <%= truncate(article.body, length:200) %>
   </div>
 <% end %>
