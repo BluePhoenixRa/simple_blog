@@ -1,26 +1,3 @@
 <h3>Editing Article</h3>
 
-<%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error-explanation" class="alert alert-danger alert-dismissable">
-      <h4><%= pluralize(@article.errors.count, "error") %></h4> prohibited this article from being updated:</h4>
-      <ul>
-      <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, class: "form-control", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body %><br />
-    <%= f.text_area :body, rows: 10, class: "form-control" %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+<%= render 'form' %>
