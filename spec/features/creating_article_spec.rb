@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Creating New Article" do
+
+  before do
+    @jane = User.create!(email: "jane@test.com", password: "password")
+  end
+
   scenario "User creates new blog article" do
     visit "/"
 
