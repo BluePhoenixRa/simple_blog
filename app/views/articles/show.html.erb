@@ -2,4 +2,6 @@
 <span class="glyphicon glyphicon-calendar"></span> <%= @article.created_at.strftime("%b %d, %Y") %>
 <p><%= simple_format(@article.body) %></p>
 
-<p><%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-success" %></p>
+<p>
+<%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-warning" %>
+<%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></p>
