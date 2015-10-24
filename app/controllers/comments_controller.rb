@@ -2,16 +2,21 @@ class CommentsController < ApplicationController
   before_action :set_article
 
   def create
-    @comment = @article.comments.build(comment_params)
-    @comment.user = current_user
-
-    if @comment.save
-      flash[:success] = "Comment has been added"
+    unless current_user
+      flash[:danger] = "Please Sign In to Comment"
+      redirect_to new_user_session_path
     else
-      flash.now[:danger] = "Failed to add comment"
-    end
+      @comment = @article.comments.build(comment_params)
+      @comment.user = current_user
 
-    redirect_to article_path(@article)
+      if @comment.save
+        flash[:success] = "Comment has been added"
+      else
+        flash.now[:danger] = "Failed to add comment"
+      end
+
+      redirect_to article_path(@article)
+    end
   end
 
   private
